@@ -32,10 +32,42 @@ public class RationalTest {
         r1.add(r2);
         Assert.assertEquals(3, r1.numerator);
         Assert.assertEquals(4, r1.denominator);
+
+        r2.numerator = -1;
+        r2.denominator = 2;
+        r1.add(r2); // 3/4 + -1/2 = 1/4
+        Assert.assertEquals(1,r1.numerator);
+        Assert.assertEquals(4,r1.denominator);
+
+        r1.numerator = -3;
+        r1.denominator = -4;
+        r1.add(r2); // -3/-4 + -1/2 = 1/4
+        Assert.assertEquals(1,r1.numerator);
+        Assert.assertEquals(4,r1.denominator);
+    }
+
+    @Test
+    public void testSubtract(){
+        r1.numerator = 1;
+        r1.denominator = 2;
+        r2.numerator = 1;
+        r2.denominator = 4;
+
+        r1.subtract(r2);
+
+        Assert.assertEquals(1, r1.numerator);
+        Assert.assertEquals(4,r1.denominator);
+
+        r2.denominator = 2;
+        r1.subtract(r2); // 1/4 - 1/2 = -1/4
+        Assert.assertEquals(-1,r1.numerator);
+        Assert.assertEquals(4,r1.denominator);
+
+//        r2.numerator
     }
 
     /***
-     * This method will be called every time after the other @Test method
+     *; This method will be called every time after the other @Test method
      * is called.
      */
     @After

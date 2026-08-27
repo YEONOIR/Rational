@@ -13,6 +13,8 @@ class Rational {
      */
     Rational() {
         // to be completed
+        numerator = 0;
+        denominator = 1;
     }
 
     /***
@@ -23,6 +25,8 @@ class Rational {
      */
     Rational(long numerator, long denominator) throws Illegal { 
         // to be completed
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     /***
@@ -51,7 +55,7 @@ class Rational {
     public void add(Rational x) { 
         numerator = (numerator * x.denominator) + (x.numerator * denominator);
         denominator = (denominator * x.denominator); 
-        simplestForm(); 
+        simplestForm();
     }
 
     /***
@@ -60,6 +64,9 @@ class Rational {
      */
     public void subtract(Rational x) {
         // to be completed
+        numerator = (numerator * x.denominator) - (x.numerator * denominator);
+        denominator = (denominator * x.denominator);
+        simplestForm();
     }
 
     /***
@@ -68,6 +75,9 @@ class Rational {
      */
     public void multiply(Rational x) { 
         // to be completed
+        numerator = numerator * x.numerator;
+        denominator = denominator * x.denominator;
+        simplestForm();
     }
 
     /***
@@ -76,6 +86,9 @@ class Rational {
      */
     public void divide(Rational x) {
         // to be completed
+        numerator = numerator * x.denominator;
+        denominator = denominator * x.numerator;
+        simplestForm();
     }
 
     /***
@@ -83,9 +96,9 @@ class Rational {
      * @param x the rational number to be compared to the current rational number
      * @return true if the given rational number equals to the current, false otherwise
      */
-    public boolean equals(Object x) {
+    public boolean equals(Rational x) {
         // to be completed
-        return true; // TODO: This needs to be modified.
+        return x.numerator == numerator && x.denominator == denominator;// TODO: This needs to be modified.
     }
 
     /***
@@ -94,9 +107,17 @@ class Rational {
      * @return -1 if the current rational number is less than the given number, 0 if they're equal, 1 if the current
      * rational number is larger than the given number
      */
-    public long compareTo(Object x) {
+    public long compareTo(Rational x) {
         // to be completed
-        return -1; // TODO: this needs to be modified.
+        subtract(x);
+        if((numerator >0 && denominator >0) ||(numerator <0 && denominator <0)) {
+            return 1;
+        } else if (numerator <0 || denominator <0){
+            return -1;
+        } else {
+            return 0;
+        }
+        // TODO: this needs to be modified.
     }
 
     /***
@@ -105,7 +126,7 @@ class Rational {
      */
     public String toString() { 
         // to be completed
-        return ""; // TODO: This needs to be modified.
+        return numerator+"/"+denominator; // TODO: This needs to be modified.
     }
 
     public static void main(String[] args) {
